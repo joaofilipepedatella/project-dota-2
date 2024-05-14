@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ActualGroup from "./_components/groupActual";
+import FindGame from "./_components/findGame";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       </div>
 
       <ActualGroup />
+      <FindGame />
     </div>
   );
 }
