@@ -13,12 +13,17 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <header className="flex w-full justify-between h-24 bg-stone-800 gap-5">
+    <header className="relative top-0 left-0 z-10 flex w-full justify-between h-24 bg-stone-800 gap-5">
       <div className="flex w-1/3 gap-5 ml-[100px]">
         <div className="flex justify-center items-center">
           <CogIcon className="text-stone-500" size={30} />
         </div>
-        <Separator orientation="vertical" />
+        <div className="flex py-6 items-center justify-center">
+          <Separator
+            orientation="vertical"
+            className="bg-black shadow-sm shadow-stone-300"
+          />
+        </div>
         <div className="flex space-x-5 items-center justify-center text-bold">
           <ArrowBigLeftIcon className="fill-black" size={30} />
           <ArrowBigRightIcon className="fill-black" size={30} />
