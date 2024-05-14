@@ -1,3 +1,19 @@
+import Image from "next/image";
+import ActualGroup from "./_components/groupActual";
+
 export default function Home() {
-  return <h1>Dota 2</h1>;
+  return (
+    <div className="min-w-full min-h-full">
+      <div>
+        <Image
+          src="/dota-2-bg.jpg"
+          layout="fill"
+          objectFit="cover"
+          alt="dota 2 background"
+        />
+      </div>
+
+      <ActualGroup />
+    </div>
+  );
 }
