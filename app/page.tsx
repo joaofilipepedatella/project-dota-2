@@ -1,6 +1,8 @@
 import Image from "next/image";
 import ActualGroup from "./_components/groupActual";
 import FindGame from "./_components/findGame";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import GameTab from "./_components/gameTab";
 
 export default function Home() {
   return (
@@ -15,7 +17,7 @@ export default function Home() {
       </div>
 
       <ActualGroup />
-      <FindGame />
+      <GameTab />
     </div>
   );
 }
