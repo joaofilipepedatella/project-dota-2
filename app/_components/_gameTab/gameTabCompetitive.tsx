@@ -13,9 +13,9 @@ import Image from "next/image";
 const JogarCompetitiva = () => {
   return (
     <>
-      <AccordionItem value="item-4" className="bg-stone-800 border-none">
+      <AccordionItem value="item-4" className="bg-slate-800/80 border-none">
         <AccordionTrigger className="px-2">COMPETITIVA</AccordionTrigger>
-        <AccordionContent className="bg-stone-600 text-stone-300 flex flex-col items-center justify-center">
+        <AccordionContent className="bg-slate-600/80 text-stone-300 flex flex-col items-center justify-center">
           <div className="flex justify-start items-center w-full border-b">
             <RadioGroup defaultValue="function" className="flex gap-5 p-4">
               <div className="flex gap-1">
@@ -67,7 +67,10 @@ const JogarCompetitiva = () => {
 
             <div className="flex flex-col gap-1 w-full justify-center">
               <div className="flex gap-1">
-                <Checkbox id="sup5" />
+                <Checkbox
+                  id="sup5"
+                  className="bg-black border-2 border-slate-400"
+                />
                 <Label htmlFor="sup5">
                   <span>Suporte dedicado</span>
                   <StarIcon
@@ -77,7 +80,10 @@ const JogarCompetitiva = () => {
                 </Label>
               </div>
               <div className="flex gap-1 border-b pb-2">
-                <Checkbox id="sup4" />
+                <Checkbox
+                  id="sup4"
+                  className="bg-black border-2 border-slate-400"
+                />
                 <Label htmlFor="sup4">
                   <span>Suporte</span>
                   <StarIcon
@@ -87,39 +93,58 @@ const JogarCompetitiva = () => {
                 </Label>
               </div>
               <div className="flex gap-1 pt-2">
-                <Checkbox id="offlane" />
+                <Checkbox
+                  id="offlane"
+                  className="bg-black border-2 border-slate-400"
+                />
                 <Label htmlFor="offlane">
                   <span>Trilha vulnerável</span>
                 </Label>
               </div>
               <div className="flex gap-1">
-                <Checkbox id="mid" />
+                <Checkbox
+                  id="mid"
+                  className="bg-black border-2 border-slate-400"
+                />
                 <Label htmlFor="mid">
                   <span>Trilha do meio</span>
                 </Label>
               </div>
               <div className="flex gap-1">
-                <Checkbox id="hc" />
+                <Checkbox
+                  id="hc"
+                  className="bg-black border-2 border-slate-400"
+                />
                 <Label htmlFor="hc">
                   <span>Trilha segura</span>
                 </Label>
               </div>
             </div>
           </div>
-          <Accordion type="single" collapsible className="bg-stone-700 w-full">
+          <Accordion
+            type="single"
+            collapsible
+            className="bg-slate-800/80 w-full"
+          >
             <AccordionItem value="competitive-mode" className="border-none">
               <AccordionTrigger className="pl-2">
                 SELEC. MODO DE JOGO
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-1 px-2">
                 <div className="flex gap-1 justify-start items-center">
-                  <Checkbox id="freePickComp" />
+                  <Checkbox
+                    id="freePickComp"
+                    className="bg-black border-2 border-slate-400"
+                  />
                   <Label htmlFor="freePickComp">
                     <span>ESCOLHA LIVRE COMPETITIVO</span>
                   </Label>
                 </div>
                 <div className="flex gap-1 justify-start items-center">
-                  <Checkbox id="randomPickComp" />
+                  <Checkbox
+                    id="randomPickComp"
+                    className="bg-black border-2 border-slate-400"
+                  />
                   <Label htmlFor="randomPickComp">
                     <span>SELEÇÃO ALEATÓRIA</span>
                   </Label>

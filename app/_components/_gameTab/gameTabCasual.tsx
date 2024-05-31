@@ -10,23 +10,29 @@ import { Label } from "@/components/ui/label";
 const JogarCasualGame = () => {
   return (
     <>
-      <AccordionItem value="item-5" className="bg-stone-800 border-none">
+      <AccordionItem value="item-5" className="bg-slate-800/80 border-none">
         <AccordionTrigger className="px-2">CASUAL</AccordionTrigger>
-        <AccordionContent className="bg-stone-600 text-stone-300">
+        <AccordionContent className="bg-slate-600/80 text-stone-300">
           <div>
             <div className="flex gap-1 justify-start items-center py-6 ml-5">
-              <Checkbox id="allPick" />
+              <Checkbox
+                id="allPick"
+                className="bg-black border-2 border-slate-400"
+              />
               <Label htmlFor="allPick">ESCOLHA LIVRE</Label>
             </div>
             <div className="flex gap-1 justify-start items-center py-6 ml-5">
-              <Checkbox id="turbo" />
+              <Checkbox
+                id="turbo"
+                className="bg-black border-2 border-slate-400"
+              />
               <Label htmlFor="turbo">TURBO</Label>
             </div>
 
             <Accordion
               type="single"
               collapsible
-              className=" flex flex-col bg-stone-700 text-stone-500 w-full"
+              className=" flex flex-col bg-slate-800/80 text-stone-500 w-full"
             >
               <AccordionItem value="casual-mode" className="border-none">
                 <AccordionTrigger className="pl-2">
@@ -35,17 +41,26 @@ const JogarCasualGame = () => {
                 <AccordionContent>
                   <div className="flex flex-col gap-1 px-2">
                     <div className="flex gap-1 justify-start items-center">
-                      <Checkbox id="individualSelection" />
+                      <Checkbox
+                        id="individualSelection"
+                        className="bg-black border-2 border-slate-400"
+                      />
                       <Label htmlFor="individualSelection">
                         SELEÇÃO INDIVIDUAL
                       </Label>
                     </div>
                     <div className="flex gap-1 justify-start items-center">
-                      <Checkbox id="randomSelection" />
+                      <Checkbox
+                        id="randomSelection"
+                        className="bg-black border-2 border-slate-400"
+                      />
                       <Label htmlFor="randomSelection">SELEÇÃO ALEATÓRIA</Label>
                     </div>
                     <div className="flex gap-1 justify-start items-center">
-                      <Checkbox id="skillSelection" />
+                      <Checkbox
+                        id="skillSelection"
+                        className="bg-black border-2 border-slate-400"
+                      />
                       <Label htmlFor="skillSelection">
                         SELEÇÃO DE HABILIDADES
                       </Label>

@@ -17,9 +17,9 @@ import Link from "next/link";
 const JogarContraBots = () => {
   return (
     <>
-      <AccordionItem value="item-3" className="bg-stone-800 border-none">
+      <AccordionItem value="item-3" className="bg-slate-800/80 border-none">
         <AccordionTrigger className="px-2">JOGAR CONTRA BOTS</AccordionTrigger>
-        <AccordionContent className="bg-stone-600 text-stone-300 flex flex-col items-center justify-center">
+        <AccordionContent className="bg-slate-600/80 text-stone-300 flex flex-col items-center justify-center">
           {/* MODO DE JOGO */}
           <div className="flex justify-start items-center w-full border-b">
             <RadioGroup defaultValue="cooperative" className="flex gap-10 p-4">

@@ -17,7 +17,7 @@ const GameTab = () => {
         </SheetTrigger>
 
         <SheetContent className="flex flex-col justify-end bg-black h-full">
-          <div className="flex flex-col justify-items-end">
+          <div className="flex flex-col justify-items-end mb-16">
             <Accordion
               type="single"
               collapsible

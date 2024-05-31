@@ -7,9 +7,9 @@ import {
 const JogarModoNovato = () => {
   return (
     <>
-      <AccordionItem value="item-6" className="bg-stone-800 border-none">
+      <AccordionItem value="item-6" className="bg-slate-800/80 border-none">
         <AccordionTrigger className="px-2">MODO PARA NOVATOS</AccordionTrigger>
-        <AccordionContent>
+        <AccordionContent className="bg-slate-600/80 text-stone-300">
           <div className="flex flex-col px-4 pt-1 gap-3">
             <p>Um modo de jogo simplificado, ideal para novatos.</p>
             <div className="w-[75%]">

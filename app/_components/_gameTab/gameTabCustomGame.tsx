@@ -8,11 +8,11 @@ import { PlusIcon, SearchIcon } from "lucide-react";
 const JogarSalaPersonalizada = () => {
   return (
     <>
-      <AccordionItem value="item-2" className="bg-stone-800 border-none">
+      <AccordionItem value="item-2" className="bg-slate-800/80 border-none">
         <AccordionTrigger className="px-2">
           SALAS PERSONALIZADAS
         </AccordionTrigger>
-        <AccordionContent className="bg-stone-600 text-stone-300 flex items-center justify-center">
+        <AccordionContent className="bg-slate-600/80 text-stone-300 flex items-center justify-center">
           <div className="flex justify-around items-center h-full w-full">
             <div className="flex justify-center items-center gap-2 border py-0.5 px-4 mt-4 w-1/3">
               <PlusIcon size={10} />

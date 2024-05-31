@@ -76,7 +76,7 @@
 }
 
 body {
-  width: 99vw;
+  width: 100vw;
   height: 90vh;
   background: #000 url("/dota-2-bg-1.jpg") no-repeat left top;
   background-size: cover;
