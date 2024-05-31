@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <>
       <header className="flex relative top-0 left-0 z-10 w-full justify-between h-16 bg-stone-800 gap-5">
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center ml-12 h-full">
           <div className="flex justify-center items-center">
             <Button variant="ghost" className="hover:bg-transparent">
               <CogIcon className="text-stone-500" size={30} />
