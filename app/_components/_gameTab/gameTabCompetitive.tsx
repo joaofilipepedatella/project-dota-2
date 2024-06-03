@@ -1,3 +1,4 @@
+"use client";
 import {
   Accordion,
   AccordionContent,
@@ -9,8 +10,81 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { InfoIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import CompetitiveRoles, { IUserRole } from "./competitiveRoles";
+
+const LIST_OF_ROLES: IUserRole[] = [
+  {
+    id: "sup5",
+    label: "Suporte dedicado",
+  },
+  {
+    id: "sup4",
+    label: "Suporte",
+  },
+  {
+    id: "offlane",
+    label: "Trilha vulnerável",
+  },
+  {
+    id: "midlane",
+    label: "Trilha do meio",
+  },
+  {
+    id: "hardcarry",
+    label: "Trilha segura",
+  },
+];
+
+interface IUserRolesSelect {
+  selectedRoles: IUserRole[];
+}
+
+const INITIAL_ROLES: IUserRolesSelect = {
+  selectedRoles: [],
+};
 
 const JogarCompetitiva = () => {
+  const [gameMode, setGameMode] = useState("function");
+  const [roleFunction, setRoleFunction] =
+    useState<IUserRolesSelect>(INITIAL_ROLES);
+
+  const handleToggleRole = (GameRole: IUserRole) => {
+    const isAlreadyInRoles = roleFunction.selectedRoles.some(
+      (rl) => rl.id === GameRole.id
+    );
+
+    let updatedRoleFunctions;
+    if (isAlreadyInRoles) {
+      updatedRoleFunctions = roleFunction.selectedRoles.filter(
+        (rl) => rl.id !== GameRole.id
+      );
+    } else {
+      updatedRoleFunctions = [...roleFunction.selectedRoles, GameRole];
+    }
+
+    setRoleFunction((prev) => ({
+      ...prev,
+      selectedRoles: updatedRoleFunctions,
+    }));
+  };
+
+  const checkIsChecked = (role: IUserRole): boolean => {
+    return roleFunction.selectedRoles.some((rl) => rl.id === role.id);
+  };
+
+  const areSupportRolesSelected = ["sup4", "sup5"].every((supportRole) =>
+    roleFunction.selectedRoles.some(
+      (selectedRole) => selectedRole.id === supportRole
+    )
+  );
+
+  const areAllRolesSelected = LIST_OF_ROLES.every((role) =>
+    roleFunction.selectedRoles.some(
+      (selectedRole) => selectedRole.id === role.id
+    )
+  );
+
   return (
     <>
       <AccordionItem value="item-4" className="bg-slate-800/80 border-none">
@@ -23,6 +97,7 @@ const JogarCompetitiva = () => {
                   value="function"
                   id="function"
                   className="bg-black"
+                  onClick={() => setGameMode("function")}
                 />
                 <Label htmlFor="function">BUSCA POR FUNÇÕES</Label>
               </div>
@@ -31,6 +106,7 @@ const JogarCompetitiva = () => {
                   value="classic"
                   id="classic"
                   className="bg-black"
+                  onClick={() => setGameMode("classic")}
                 />
                 <Label htmlFor="classic">CLÁSSICA</Label>
               </div>
@@ -56,71 +132,43 @@ const JogarCompetitiva = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col gap-2 justify-start items-center w-full p-2">
-            <div className="flex gap-1 justify-start items-center w-full">
-              <h5 className="text-green-500">BUSCA COM FUNÇÃO</h5>
-              <InfoIcon size={15} className="text-stone-600 fill-stone-300" />
-            </div>
-            <p className="text-xs text-stone-400">
-              Você receberá 4 partidas com função (metade caso perca).
-            </p>
+          {gameMode == "function" && (
+            <>
+              <div className="flex flex-col gap-2 justify-start items-center w-full p-2">
+                <div className="flex gap-1 justify-start items-center w-full">
+                  <h5 className="text-green-500">BUSCA COM FUNÇÃO</h5>
+                  <InfoIcon
+                    size={15}
+                    className="text-stone-600 fill-stone-300"
+                  />
+                </div>
+                <div>
+                  {areSupportRolesSelected && !areAllRolesSelected && (
+                    <p>
+                      Todas as funções de alta demanda já foram selecionadas.
+                      Selecione todas as funções para obter mais buscas com
+                      funções.
+                    </p>
+                  )}
+                  {areAllRolesSelected && (
+                    <p>
+                      Você receberá 4 partidas com função (metade caso perca).
+                    </p>
+                  )}
+                </div>
 
-            <div className="flex flex-col gap-1 w-full justify-center">
-              <div className="flex gap-1">
-                <Checkbox
-                  id="sup5"
-                  className="bg-black border-2 border-slate-400"
-                />
-                <Label htmlFor="sup5">
-                  <span>Suporte dedicado</span>
-                  <StarIcon
-                    size={10}
-                    className="text-slate-200 fill-slate-200 inline mx-1"
-                  />
-                </Label>
+                <div className="flex flex-col gap-1 w-full justify-center">
+                  <div className="flex flex-col gap-1">
+                    <CompetitiveRoles
+                      roles={LIST_OF_ROLES}
+                      handleToggleRole={handleToggleRole}
+                      checkIsChecked={checkIsChecked}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-1 border-b pb-2">
-                <Checkbox
-                  id="sup4"
-                  className="bg-black border-2 border-slate-400"
-                />
-                <Label htmlFor="sup4">
-                  <span>Suporte</span>
-                  <StarIcon
-                    size={10}
-                    className="text-slate-200 fill-slate-200 inline mx-1"
-                  />
-                </Label>
-              </div>
-              <div className="flex gap-1 pt-2">
-                <Checkbox
-                  id="offlane"
-                  className="bg-black border-2 border-slate-400"
-                />
-                <Label htmlFor="offlane">
-                  <span>Trilha vulnerável</span>
-                </Label>
-              </div>
-              <div className="flex gap-1">
-                <Checkbox
-                  id="mid"
-                  className="bg-black border-2 border-slate-400"
-                />
-                <Label htmlFor="mid">
-                  <span>Trilha do meio</span>
-                </Label>
-              </div>
-              <div className="flex gap-1">
-                <Checkbox
-                  id="hc"
-                  className="bg-black border-2 border-slate-400"
-                />
-                <Label htmlFor="hc">
-                  <span>Trilha segura</span>
-                </Label>
-              </div>
-            </div>
-          </div>
+            </>
+          )}
           <Accordion
             type="single"
             collapsible
