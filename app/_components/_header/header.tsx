@@ -142,7 +142,7 @@ const Header = () => {
               <SwordIcon className="fill-stone-500" size="40px" />
             </Button>
           </div>
-          <div className="flex h-full justify-center items-center text-yellow-400 bg-yellow-950 w-20 border-r-2 border-black">
+          <div className="flex h-full justify-center items-center text-yellow-400 bg-yellow-900 w-20 border-r-2 border-black">
             <Button
               variant={"ghost"}
               className="hover:bg-transparent hover:text-inherit"
