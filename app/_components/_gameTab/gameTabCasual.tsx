@@ -32,7 +32,7 @@ const JogarCasualGame = () => {
             <Accordion
               type="single"
               collapsible
-              className=" flex flex-col bg-slate-800/80 text-stone-500 w-full"
+              className=" flex flex-col bg-slate-800/80 text-stone-300 w-full"
             >
               <AccordionItem value="casual-mode" className="border-none">
                 <AccordionTrigger className="pl-2">
