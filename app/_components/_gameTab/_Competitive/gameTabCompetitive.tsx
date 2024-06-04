@@ -5,13 +5,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { InfoIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import CompetitiveRoles, { IUserRole } from "./competitiveRoles";
+import CompGameModes, { IGameMode } from "./competitiveGameModes";
 
 const LIST_OF_ROLES: IUserRole[] = [
   {
@@ -36,6 +36,17 @@ const LIST_OF_ROLES: IUserRole[] = [
   },
 ];
 
+const LIST_OF_MODES: IGameMode[] = [
+  {
+    id: "allPickCompetitive",
+    label: "ESCOLHA LIVRE COMPETITIVO",
+  },
+  {
+    id: "randomPickCompetitive",
+    label: "SELEÇÃO ALEATÓRIA",
+  },
+];
+
 interface IUserRolesSelect {
   selectedRoles: IUserRole[];
 }
@@ -44,10 +55,20 @@ const INITIAL_ROLES: IUserRolesSelect = {
   selectedRoles: [],
 };
 
+interface IUserModesSelect {
+  selectedModes: IGameMode[];
+}
+
+const INITIAL_MODES: IUserModesSelect = {
+  selectedModes: [],
+};
+
 const JogarCompetitiva = () => {
-  const [gameMode, setGameMode] = useState("function");
+  const [compMode, setCompMode] = useState("function");
   const [roleFunction, setRoleFunction] =
     useState<IUserRolesSelect>(INITIAL_ROLES);
+
+  const [gameMode, setGameMode] = useState<IUserModesSelect>(INITIAL_MODES);
 
   const handleToggleRole = (GameRole: IUserRole) => {
     const isAlreadyInRoles = roleFunction.selectedRoles.some(
@@ -69,7 +90,7 @@ const JogarCompetitiva = () => {
     }));
   };
 
-  const checkIsChecked = (role: IUserRole): boolean => {
+  const checkIsRoleChecked = (role: IUserRole): boolean => {
     return roleFunction.selectedRoles.some((rl) => rl.id === role.id);
   };
 
@@ -85,6 +106,23 @@ const JogarCompetitiva = () => {
     )
   );
 
+  const handleToggleMode = (GameMode: IGameMode) => {
+    const isAlreadyInModes = gameMode.selectedModes.some(
+      (md) => md.id === GameMode.id
+    );
+
+    let updatedGameModes;
+    if (isAlreadyInModes) {
+      updatedGameModes = gameMode.selectedModes.filter(
+        (md) => md.id !== GameMode.id
+      );
+    } else {
+      updatedGameModes = [...gameMode.selectedModes, GameMode];
+    }
+
+    setGameMode((prev) => ({ ...prev, selectedModes: updatedGameModes }));
+  };
+
   return (
     <>
       <AccordionItem value="item-4" className="bg-slate-800/80 border-none">
@@ -92,21 +130,21 @@ const JogarCompetitiva = () => {
         <AccordionContent className="bg-slate-600/80 text-stone-300 flex flex-col items-center justify-center">
           <div className="flex justify-start items-center w-full border-b">
             <RadioGroup defaultValue="function" className="flex gap-5 p-4">
-              <div className="flex gap-1">
+              <div className="flex items-center space-x-1">
                 <RadioGroupItem
                   value="function"
                   id="function"
-                  className="bg-black"
-                  onClick={() => setGameMode("function")}
+                  className="border-2 border-black"
+                  onClick={() => setCompMode("function")}
                 />
                 <Label htmlFor="function">BUSCA POR FUNÇÕES</Label>
               </div>
-              <div className="flex gap-1">
+              <div className="flex items-center space-x-2">
                 <RadioGroupItem
                   value="classic"
                   id="classic"
-                  className="bg-black"
-                  onClick={() => setGameMode("classic")}
+                  className="border-2 border-black"
+                  onClick={() => setCompMode("classic")}
                 />
                 <Label htmlFor="classic">CLÁSSICA</Label>
               </div>
@@ -132,7 +170,7 @@ const JogarCompetitiva = () => {
               />
             </div>
           </div>
-          {gameMode == "function" && (
+          {compMode == "function" && (
             <>
               <div className="flex flex-col gap-2 justify-start items-center w-full p-2">
                 <div className="flex gap-1 justify-start items-center w-full">
@@ -144,14 +182,14 @@ const JogarCompetitiva = () => {
                 </div>
                 <div>
                   {areSupportRolesSelected && !areAllRolesSelected && (
-                    <p>
+                    <p className="text-xs">
                       Todas as funções de alta demanda já foram selecionadas.
                       Selecione todas as funções para obter mais buscas com
                       funções.
                     </p>
                   )}
                   {areAllRolesSelected && (
-                    <p>
+                    <p className="text-xs">
                       Você receberá 4 partidas com função (metade caso perca).
                     </p>
                   )}
@@ -162,7 +200,7 @@ const JogarCompetitiva = () => {
                     <CompetitiveRoles
                       roles={LIST_OF_ROLES}
                       handleToggleRole={handleToggleRole}
-                      checkIsChecked={checkIsChecked}
+                      checkIsRoleChecked={checkIsRoleChecked}
                     />
                   </div>
                 </div>
@@ -179,23 +217,11 @@ const JogarCompetitiva = () => {
                 SELEC. MODO DE JOGO
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-1 px-2">
-                <div className="flex gap-1 justify-start items-center">
-                  <Checkbox
-                    id="freePickComp"
-                    className="bg-black border-2 border-slate-400"
+                <div className="flex flex-col gap-1 justify-start items-start">
+                  <CompGameModes
+                    modes={LIST_OF_MODES}
+                    handleToggleMode={handleToggleMode}
                   />
-                  <Label htmlFor="freePickComp">
-                    <span>ESCOLHA LIVRE COMPETITIVO</span>
-                  </Label>
-                </div>
-                <div className="flex gap-1 justify-start items-center">
-                  <Checkbox
-                    id="randomPickComp"
-                    className="bg-black border-2 border-slate-400"
-                  />
-                  <Label htmlFor="randomPickComp">
-                    <span>SELEÇÃO ALEATÓRIA</span>
-                  </Label>
                 </div>
               </AccordionContent>
             </AccordionItem>

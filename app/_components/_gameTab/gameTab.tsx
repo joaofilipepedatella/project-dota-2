@@ -4,7 +4,7 @@ import { Accordion } from "@/components/ui/accordion";
 import JogarContraBots from "./gameTabBots";
 import JogarCopaDeBatalhas from "./gameTabBattleCup";
 import JogarSalaPersonalizada from "./gameTabCustomGame";
-import JogarCompetitiva from "./gameTabCompetitive";
+import JogarCompetitiva from "./_Competitive/gameTabCompetitive";
 import JogarCasualGame from "./gameTabCasual";
 import JogarModoNovato from "./gameTabNewers";
 

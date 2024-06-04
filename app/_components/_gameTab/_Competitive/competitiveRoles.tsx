@@ -9,13 +9,13 @@ export interface IUserRole {
 interface DynamicRolesProps {
   roles: IUserRole[];
   handleToggleRole: (GameRole: IUserRole) => void;
-  checkIsChecked: (role: IUserRole) => boolean;
+  checkIsRoleChecked: (role: IUserRole) => boolean;
 }
 
 const CompetitiveRoles = ({
   roles,
   handleToggleRole,
-  checkIsChecked,
+  checkIsRoleChecked,
 }: DynamicRolesProps) => {
   return (
     <>
@@ -25,7 +25,7 @@ const CompetitiveRoles = ({
             id={role.id}
             className="bg-black border-2 border-slate-400"
             onCheckedChange={() => handleToggleRole(role)}
-            checked={checkIsChecked(role)}
+            checked={checkIsRoleChecked(role)}
           />
           <Label htmlFor={role.id}>
             <span>{role.label}</span>

@@ -14,14 +14,14 @@ const JogarCasualGame = () => {
         <AccordionTrigger className="px-2">CASUAL</AccordionTrigger>
         <AccordionContent className="bg-slate-600/80 text-stone-300">
           <div>
-            <div className="flex gap-1 justify-start items-center py-6 ml-5">
+            <div className="flex gap-1 justify-start items-center py-6 px-5 border-b">
               <Checkbox
                 id="allPick"
                 className="bg-black border-2 border-slate-400"
               />
               <Label htmlFor="allPick">ESCOLHA LIVRE</Label>
             </div>
-            <div className="flex gap-1 justify-start items-center py-6 ml-5">
+            <div className="flex gap-1 justify-start items-center py-6 px-5">
               <Checkbox
                 id="turbo"
                 className="bg-black border-2 border-slate-400"
