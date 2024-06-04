@@ -11,6 +11,7 @@ import {
   SwordIcon,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -65,9 +66,11 @@ const Header = () => {
                 variant={"ghost"}
                 className="px-8 hover:bg-transparent h-full"
               >
-                <p className="text-stone-500 text-center font-semibold text-lg">
-                  HERÓIS
-                </p>
+                <Link href={"/heroes"}>
+                  <p className="text-stone-500 text-center font-semibold text-lg">
+                    HERÓIS
+                  </p>
+                </Link>
               </Button>
             </div>
             <div className="flex h-full items-center border-r-2 border-black">
