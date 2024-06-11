@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ShieldPlusIcon } from "lucide-react";
+import Link from "next/link";
 
 const HeaderHeroes = () => {
   return (
@@ -8,9 +9,11 @@ const HeaderHeroes = () => {
       <header className="flex w-full justify-center h-10 bg-stone-800/25 gap-5 tracking-wider ">
         <div className=" flex w-3/5 space-x-7 px-6 text-white items-center">
           <div>
-            <Button className="bg-transparent hover:bg-transparent h-full w-full text-base">
-              HERÓIS
-            </Button>
+            <Link href={"/heroes"}>
+              <Button className="bg-transparent hover:bg-transparent h-full w-full text-base">
+                HERÓIS
+              </Button>
+            </Link>
           </div>
           <Separator orientation="vertical" className="h-5" />
           <div>
