@@ -50,12 +50,12 @@ const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
           <p>
             Atributo primário:
             {hero.primary_attr === "str"
-              ? "Força"
+              ? " Força"
               : hero.primary_attr === "agi"
-              ? "Agilidade"
+              ? " Agilidade"
               : hero.primary_attr === "int"
-              ? "Inteligência"
-              : "Universal"}
+              ? " Inteligência"
+              : " Universal"}
           </p>
           <p>Tipo de ataque: {hero.attack_type}</p>
           <p>Roles: {hero.roles.join(", ")}</p>

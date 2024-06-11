@@ -72,8 +72,8 @@ const HeroList: React.FC<HeroesListProps> = ({ heroes, attribute }) => {
     .sort((a, b) => a.localized_name.localeCompare(b.localized_name));
 
   return (
-    <div className={`p-5 ${bgColor} rounded-lg mt-4`}>
-      <h2 className={`text-lg font-bold ${textColor} p-1`}>{attributeName}</h2>
+    <div className={`px-5 pb-5 pt-2 ${bgColor} rounded-lg mt-4`}>
+      <h2 className={`text-lg font-bold ${textColor} pb-2`}>{attributeName}</h2>
       <div className="grid grid-cols-8 gap-1">
         {sortedHeroes.map((hero) => {
           const heroStat = heroStats.find((stat) => stat.id === hero.id);
@@ -81,7 +81,7 @@ const HeroList: React.FC<HeroesListProps> = ({ heroes, attribute }) => {
           return (
             <Link key={hero.id} href={`/heroes/${hero.id}`}>
               <Button
-                className={`${bgColor} rounded shadow p-0 h-16 w-24 flex justify-center items-center text-center hover:bg-transparent`}
+                className={`rounded shadow p-0 h-16 w-24 flex justify-center items-center text-center hover:bg-transparent`}
                 onClick={() => setHeroId(hero.id)}
               >
                 <img
