@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import HeaderHeroes from "./_components/header";
 import HeroList from "./_components/heroList";
+import { HeroProvider } from "../contexts/HeroContext";
+
 interface Hero {
   id: number;
   localized_name: string;
@@ -22,13 +25,19 @@ const HeroesPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Dota 2 Heroes</h1>
-      <HeroList heroes={heroes} attribute="str" />
-      <HeroList heroes={heroes} attribute="agi" />
-      <HeroList heroes={heroes} attribute="int" />
-      <HeroList heroes={heroes} attribute="all" />
-    </div>
+    <>
+      <HeaderHeroes />
+      <div className="flex items-center justify-center mt-10">
+        <HeroProvider>
+          <div className="grid grid-cols-2 gap-4">
+            <HeroList heroes={heroes} attribute="str" />
+            <HeroList heroes={heroes} attribute="agi" />
+            <HeroList heroes={heroes} attribute="int" />
+            <HeroList heroes={heroes} attribute="all" />
+          </div>
+        </HeroProvider>
+      </div>
+    </>
   );
 };
 
