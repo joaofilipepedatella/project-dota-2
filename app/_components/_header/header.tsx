@@ -51,12 +51,14 @@ const Header = () => {
               variant={"ghost"}
               className="px-8 hover:bg-transparent h-full"
             >
-              <Image
-                src="/dota-2-logo.png"
-                alt="Dota 2 symbol"
-                width={100}
-                height={100}
-              />
+              <Link href={"/"}>
+                <Image
+                  src="/dota-2-logo.png"
+                  alt="Dota 2 symbol"
+                  width={100}
+                  height={100}
+                />
+              </Link>
             </Button>
           </div>
 
