@@ -39,14 +39,14 @@ interface HeroInfoProps {
 
 const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
   return (
-    <div className="flex mt-14 ml-14 justify-between items-center ">
+    <div className="flex flex-1 mt-14 ml-14 justify-between items-center ">
       <div className="flex flex-col w-1/4">
         <div>
           <h1 className="text-white font-semibold uppercase text-5xl pb-5">
             {hero.localized_name}
           </h1>
         </div>
-        <div className="text-slate-300">
+        <div className="text-slate-300 leading-7">
           <p>
             Atributo primário:
             {hero.primary_attr === "str"
@@ -166,7 +166,7 @@ const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
                   <p className="text-base w-full  font-bold text-slate-100">
                     {hero.base_health + hero.base_str * 22}
                   </p>
-                  <p className="absolute right-1 text-sm text-slate-100">
+                  <p className="absolute right-3 text-sm text-slate-100">
                     +
                     {(
                       hero.base_health_regen +
@@ -182,7 +182,7 @@ const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
                   <p className="text-base w-full  font-bold text-slate-100">
                     {hero.base_mana + hero.base_int * 12}
                   </p>
-                  <p className="absolute right-1 text-sm text-slate-100">
+                  <p className="absolute right-3 text-sm text-slate-100">
                     +
                     {(
                       hero.base_mana_regen +

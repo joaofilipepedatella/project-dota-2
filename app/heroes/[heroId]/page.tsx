@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import heroes from "@/public/heroes.json";
 import HeroInfo from "./_components/heroInfo";
 import HeaderHeroes from "../_components/header";
+import HeroImage from "./_components/heroImage";
 
 const findHeroById = (id: number) => {
   return heroes.find((hero) => hero.id === id);
@@ -20,7 +21,10 @@ const HeroPage = () => {
   return (
     <>
       <HeaderHeroes />
-      <HeroInfo hero={hero} />
+      <div className="flex flex-row w-full h-full items-center relative">
+        <HeroInfo hero={hero} />
+        <HeroImage hero={hero} />
+      </div>
     </>
   );
 };
