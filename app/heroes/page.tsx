@@ -30,10 +30,10 @@ const HeroesPage = () => {
       <div className="flex items-center justify-center mt-10">
         <HeroProvider>
           <div className="grid grid-cols-2 gap-4">
-            <HeroList heroes={heroes} attribute="str" />
-            <HeroList heroes={heroes} attribute="agi" />
-            <HeroList heroes={heroes} attribute="int" />
-            <HeroList heroes={heroes} attribute="all" />
+            <HeroList attribute="str" />
+            <HeroList attribute="agi" />
+            <HeroList attribute="int" />
+            <HeroList attribute="all" />
           </div>
         </HeroProvider>
       </div>

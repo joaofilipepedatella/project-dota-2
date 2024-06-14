@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useHero } from "@/app/contexts/HeroContext";
+import heroes from "@/public/heroes.json";
 
 export interface Hero {
   id: number;
@@ -16,7 +17,6 @@ interface HeroStats {
 }
 
 interface HeroesListProps {
-  heroes: Hero[];
   attribute: string;
 }
 
@@ -27,7 +27,7 @@ const attributeNames: { [key: string]: string } = {
   all: "Universal",
 };
 
-const HeroList: React.FC<HeroesListProps> = ({ heroes, attribute }) => {
+const HeroList: React.FC<HeroesListProps> = ({ attribute }) => {
   const { selectedHeroId, setHeroId } = useHero();
 
   const bgColor =
@@ -51,20 +51,7 @@ const HeroList: React.FC<HeroesListProps> = ({ heroes, attribute }) => {
   const [heroStats, setHeroStats] = useState<HeroStats[]>([]);
 
   useEffect(() => {
-    const fetchHeroStats = async () => {
-      try {
-        const response = await fetch("https://api.opendota.com/api/heroStats/");
-        if (!response.ok) {
-          throw new Error("Erro ao buscar os stats dos heróis");
-        }
-        const data = await response.json();
-        setHeroStats(data);
-      } catch (error) {
-        console.error("Erro ao buscar os stats dos heróis:", error);
-      }
-    };
-
-    fetchHeroStats();
+    setHeroStats(heroes);
   }, []);
 
   const sortedHeroes = heroes
@@ -76,8 +63,6 @@ const HeroList: React.FC<HeroesListProps> = ({ heroes, attribute }) => {
       <h2 className={`text-lg font-bold ${textColor} pb-2`}>{attributeName}</h2>
       <div className="grid grid-cols-8 gap-1">
         {sortedHeroes.map((hero) => {
-          const heroStat = heroStats.find((stat) => stat.id === hero.id);
-          if (!heroStat) return null;
           return (
             <Link key={hero.id} href={`/heroes/${hero.id}`}>
               <Button
@@ -85,7 +70,7 @@ const HeroList: React.FC<HeroesListProps> = ({ heroes, attribute }) => {
                 onClick={() => setHeroId(hero.id)}
               >
                 <img
-                  src={`https://cdn.dota2.com${heroStat.img}`}
+                  src={`https://cdn.dota2.com${hero.img}`}
                   alt={hero.localized_name}
                   className="w-24 h-16 rounded-sm"
                 />

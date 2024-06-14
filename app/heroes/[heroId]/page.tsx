@@ -25,7 +25,7 @@ const HeroPage = () => {
       <div className="flex justify-center items-center flex-grow mt-14">
         <HeroInfo hero={hero} />
         <HeroImage hero={hero} />
-        <HeroProPlayers heroId={heroIdNumber} />
+        {/* <HeroProPlayers heroId={heroIdNumber} /> */}
       </div>
     </>
   );
