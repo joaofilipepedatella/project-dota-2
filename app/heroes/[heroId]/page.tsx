@@ -5,6 +5,7 @@ import heroes from "@/public/heroes.json";
 import HeroInfo from "./_components/heroInfo";
 import HeaderHeroes from "../_components/header";
 import HeroImage from "./_components/heroImage";
+import HeroProPlayers from "./_components/heroProPlayers";
 
 const findHeroById = (id: number) => {
   return heroes.find((hero) => hero.id === id);
@@ -21,9 +22,10 @@ const HeroPage = () => {
   return (
     <>
       <HeaderHeroes />
-      <div className="flex flex-row w-full h-full items-center relative">
+      <div className="flex justify-center items-center flex-grow mt-14">
         <HeroInfo hero={hero} />
         <HeroImage hero={hero} />
+        <HeroProPlayers heroId={heroIdNumber} />
       </div>
     </>
   );

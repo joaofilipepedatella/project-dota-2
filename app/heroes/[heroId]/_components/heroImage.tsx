@@ -13,7 +13,7 @@ const HeroImage: React.FC<HeroImageProps> = ({ hero }) => {
   );
 
   return (
-    <div className="absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="flex flex-1 justify-center items-center w-1/3">
       <img
         src={heroImage?.url_vertical_portrait}
         alt={hero.localized_name}

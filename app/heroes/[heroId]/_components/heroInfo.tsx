@@ -39,8 +39,8 @@ interface HeroInfoProps {
 
 const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
   return (
-    <div className="flex flex-1 mt-14 ml-14 justify-between items-center ">
-      <div className="flex flex-col w-1/4">
+    <div className="flex flex-1 items-center w-1/3">
+      <div className="flex flex-col w-3/4 p-4">
         <div>
           <h1 className="text-white font-semibold uppercase text-5xl pb-5">
             {hero.localized_name}

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ActualGroup from "./_components/_group/groupActual";
 import GameTab from "./_components/_gameTab/gameTab";
 
