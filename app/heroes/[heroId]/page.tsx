@@ -5,7 +5,6 @@ import heroes from "@/public/heroes.json";
 import HeroInfo from "./_components/heroInfo";
 import HeaderHeroes from "../_components/header";
 import HeroImage from "./_components/heroImage";
-import HeroProPlayers from "./_components/heroProPlayers";
 
 const findHeroById = (id: number) => {
   return heroes.find((hero) => hero.id === id);

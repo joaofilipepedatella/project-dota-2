@@ -76,13 +76,13 @@ const Header = () => {
               </Button>
             </div>
             <div className="flex h-full items-center border-r-2 border-black">
-              <Link href={"/players"}>
+              <Link href={"/teams"}>
                 <Button
                   variant={"ghost"}
                   className="px-8 hover:bg-transparent h-full"
                 >
                   <p className="text-stone-500 text-center font-semibold text-lg">
-                    JOGADORES
+                    EQUIPES
                   </p>
                 </Button>
               </Link>

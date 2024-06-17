@@ -1,3 +1,5 @@
+import teams from "@/public/teams.json";
+
 interface ProPlayerProps {
   player: {
     account_id: number;
@@ -11,8 +13,6 @@ interface ProPlayerProps {
     team_tag: string;
   };
 }
-
-import teams from "@/public/teams.json";
 
 const ProPlayerDetails: React.FC<ProPlayerProps> = ({ player }) => {
   const team = teams.find((team) => team.team_id === player.team_id);
