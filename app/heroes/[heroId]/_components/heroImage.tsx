@@ -13,11 +13,11 @@ const HeroImage: React.FC<HeroImageProps> = ({ hero }) => {
   );
 
   return (
-    <div className="flex flex-1 justify-center items-center w-1/3">
+    <div className="flex flex-1 justify-center items-center mr-20">
       <img
         src={heroImage?.url_vertical_portrait}
         alt={hero.localized_name}
-        className="w-96 rounded-md shadow-inner"
+        className="w-44 rounded-md shadow-inner"
       />
     </div>
   );

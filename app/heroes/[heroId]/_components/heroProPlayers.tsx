@@ -1,35 +1,52 @@
-import ProPlayerDetails from "@/app/players/_components/proPlayerDetails";
 import React, { useState, useEffect } from "react";
+import PlayerThumbnail from "./playerThumbnail";
 
-interface ProPlayer {
+export interface PlayerInfo {
   account_id: number;
-  games_played: number;
-  wins: number;
 }
 
-const HeroProPlayers = ({ heroId }: { heroId: number }) => {
-  const [proPlayers, setProPlayers] = useState<ProPlayer[]>([]);
+interface HeroProPlayersProps {
+  heroId: number;
+}
+
+const HeroProPlayers: React.FC<HeroProPlayersProps> = ({ heroId }) => {
+  const [playerIds, setPlayerIds] = useState<number[]>([]);
 
   useEffect(() => {
-    const fetchProPlayers = async () => {
-      const response = await fetch(
-        `https://api.opendota.com/api/heroes/${heroId}/players`
-      );
-      const proPlayersData = await response.json();
-      setProPlayers(proPlayersData.slice(0, 6)); // Renderizar apenas 6 objetos
+    const fetchPlayers = async () => {
+      try {
+        const response = await fetch(
+          `https://api.opendota.com/api/heroes/${heroId}/players`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch player data");
+        }
+        const playerData: { account_id: number; wins: number }[] =
+          await response.json();
+        // Filtrar jogadores com 0 vitórias
+        const filteredPlayerData = playerData.filter(
+          (player) => player.wins > 0
+        );
+        // Ordenar os jogadores pelos wins e pegar os top 6 account_ids
+        const sortedPlayerIds = filteredPlayerData
+          .sort((a, b) => b.wins - a.wins)
+          .slice(0, 6)
+          .map((player) => player.account_id);
+        setPlayerIds(sortedPlayerIds);
+      } catch (error) {
+        console.error("Erro ao buscar os jogadores:", error);
+      }
     };
-    fetchProPlayers();
+
+    fetchPlayers();
   }, [heroId]);
 
   return (
-    <div>
-      <h2>Top 6 Pro Players who play {heroId}</h2>
-      <ul>
-        {proPlayers.map((proPlayer) => (
-          <ProPlayerDetails
-            key={proPlayer.account_id}
-            account_id={proPlayer.account_id}
-          />
+    <div className="flex flex-col gap-4 text-slate-400 bg-slate-700/10 p-6 rounded-lg">
+      <h2 className="font-semibold text-xl text-white">Top Jogadores</h2>
+      <ul className="grid grid-cols-3 gap-2">
+        {playerIds.map((accountId, index) => (
+          <PlayerThumbnail key={index} accountId={accountId} />
         ))}
       </ul>
     </div>

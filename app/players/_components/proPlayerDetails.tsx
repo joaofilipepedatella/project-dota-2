@@ -1,25 +1,12 @@
 import teams from "@/public/teams.json";
-
-interface ProPlayerProps {
-  player: {
-    account_id: number;
-    avatarfull: string | null;
-    personaname: string | null;
-    loccountrycode?: string | null;
-    name: string;
-    fantasy_role: number;
-    team_id: number;
-    team_name: string;
-    team_tag: string;
-  };
-}
+import { ProPlayerProps } from "../[playerId]/page";
 
 const ProPlayerDetails: React.FC<ProPlayerProps> = ({ player }) => {
   const team = teams.find((team) => team.team_id === player.team_id);
   const teamLogoUrl = team ? team.logo_url : "";
 
   return (
-    <div className="flex flex-col justify-center items-start p-14 gap-4 text-slate-300">
+    <div className="flex flex-col justify-center items-start gap-4 text-slate-300">
       <div>
         <img src={player.avatarfull ?? ""} alt={player.name} />
       </div>

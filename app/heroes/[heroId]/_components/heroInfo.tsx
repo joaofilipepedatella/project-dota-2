@@ -9,8 +9,9 @@ import {
   WandSparklesIcon,
   WindIcon,
 } from "lucide-react";
+import HeroImage from "./heroImage";
 
-interface HeroInfoProps {
+export interface HeroInfoProps {
   hero: {
     localized_name: string;
     primary_attr: string;
@@ -33,13 +34,12 @@ interface HeroInfoProps {
     base_health_regen: number;
     base_mana: number;
     base_mana_regen: number;
-    // ... outras props que você deseja receber
   };
 }
 
 const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
   return (
-    <div className="flex flex-1 items-center w-1/3">
+    <div className="flex flex-1 items-center">
       <div className="flex flex-col w-3/4 p-4">
         <div>
           <h1 className="text-white font-semibold uppercase text-5xl pb-5">
@@ -60,6 +60,7 @@ const HeroInfo: React.FC<HeroInfoProps> = ({ hero }) => {
           <p>Tipo de ataque: {hero.attack_type}</p>
           <p>Roles: {hero.roles.join(", ")}</p>
         </div>
+
         <div className="flex justify-between text-slate-100 mt-4">
           <div className="flex flex-col gap-4 border-r border-t border-b w-1/3 border-white pl-2 py-5">
             <div>
