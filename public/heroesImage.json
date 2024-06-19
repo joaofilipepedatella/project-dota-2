@@ -1036,6 +1036,15 @@
       "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/dark_willow_lg.png",
       "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/dark_willow_vert.jpg",
       "id": 119
+    },
+    {
+      "localized_name": "Mars",
+      "url_full_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/mars_full.png",
+      "name": "npc_dota_hero_mars",
+      "url_small_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/mars_sb.png",
+      "url_large_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/mars_lg.png",
+      "url_vertical_portrait": "http://cdn.dota2.com/apps/dota2/images/heroes/mars_vert.jpg",
+      "id": 129
     }
   ]
 }
