@@ -1,10 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-interface PlayerInfo {
-  account_id: number;
-}
-
 interface PlayerData {
   profile: {
     account_id: number;
@@ -40,7 +36,7 @@ const PlayerThumbnail: React.FC<PlayerThumbnailProps> = ({ accountId }) => {
   }, [accountId]);
 
   return (
-    <div>
+    <>
       {playersInfo.map((playerData, index) => (
         <Link
           key={playerData.profile.account_id}
@@ -48,7 +44,7 @@ const PlayerThumbnail: React.FC<PlayerThumbnailProps> = ({ accountId }) => {
         >
           <div
             key={index}
-            className="flex flex-col py-4 px-1 justify-center items-center bg-slate-700/20 rounded-lg space-y-2 max-w-32 text-center h-full text-wrap"
+            className="flex flex-col py-4 px-1 justify-center items-center bg-slate-700/20 rounded-lg space-y-2 w-28 text-center h-full text-wrap"
           >
             <img
               src={playerData.profile.avatarfull}
@@ -59,7 +55,7 @@ const PlayerThumbnail: React.FC<PlayerThumbnailProps> = ({ accountId }) => {
           </div>
         </Link>
       ))}
-    </div>
+    </>
   );
 };
 
