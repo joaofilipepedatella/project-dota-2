@@ -8,13 +8,16 @@ export interface ProPlayer {
   team_id: number;
   name: string;
   avatarmedium: string;
+  is_current_team_member?: boolean | null;
 }
 
 export interface Team {
-  team_id: number;
-  name: string;
-  tag: string;
-  logo_url: string;
+  team_id?: number;
+  name?: string;
+  tag?: string;
+  logo_url?: string;
+  wins?: number;
+  losses?: number;
 }
 
 const TeamsPage = () => {
