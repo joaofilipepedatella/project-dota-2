@@ -1,13 +1,30 @@
 import React, { useState, useEffect } from "react";
 import PlayerThumbnail from "./playerThumbnail";
 
-export interface PlayerInfo {
+interface PlayerData {
   account_id: number;
+  wins: number;
 }
 
 interface HeroProPlayersProps {
   heroId: number;
 }
+
+const fetchWithCache = async (url: string) => {
+  const cachedData = localStorage.getItem(url);
+  if (cachedData) {
+    return JSON.parse(cachedData);
+  }
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const data = await response.json();
+  localStorage.setItem(url, JSON.stringify(data));
+  return data;
+};
 
 const HeroProPlayers: React.FC<HeroProPlayersProps> = ({ heroId }) => {
   const [playerIds, setPlayerIds] = useState<number[]>([]);
@@ -15,14 +32,9 @@ const HeroProPlayers: React.FC<HeroProPlayersProps> = ({ heroId }) => {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await fetch(
+        const playerData: PlayerData[] = await fetchWithCache(
           `https://api.opendota.com/api/heroes/${heroId}/players`
         );
-        if (!response.ok) {
-          throw new Error("Failed to fetch player data");
-        }
-        const playerData: { account_id: number; wins: number }[] =
-          await response.json();
         // Filtrar jogadores com 0 vitórias
         const filteredPlayerData = playerData.filter(
           (player) => player.wins > 0
@@ -33,6 +45,7 @@ const HeroProPlayers: React.FC<HeroProPlayersProps> = ({ heroId }) => {
           .slice(0, 6)
           .map((player) => player.account_id);
         setPlayerIds(sortedPlayerIds);
+        console.log(sortedPlayerIds);
       } catch (error) {
         console.error("Erro ao buscar os jogadores:", error);
       }
