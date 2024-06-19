@@ -48,7 +48,7 @@ const PlayerThumbnail: React.FC<PlayerThumbnailProps> = ({ accountId }) => {
         >
           <div
             key={index}
-            className="flex flex-col py-4 px-1 justify-center items-center bg-slate-700/20 rounded-lg space-y-2"
+            className="flex flex-col py-4 px-1 justify-center items-center bg-slate-700/20 rounded-lg space-y-2 max-w-32 text-center h-full text-wrap"
           >
             <img
               src={playerData.profile.avatarfull}

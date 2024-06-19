@@ -42,7 +42,7 @@ const HeroProPlayers: React.FC<HeroProPlayersProps> = ({ heroId }) => {
   }, [heroId]);
 
   return (
-    <div className="flex flex-col gap-4 text-slate-400 bg-slate-700/10 p-6 rounded-lg">
+    <div className="flex flex-col gap-4 text-slate-400 bg-slate-700/10 p-6 rounded-lg lg:min-w-[450px]">
       <h2 className="font-semibold text-xl text-white">Top Jogadores</h2>
       <ul className="grid grid-cols-3 gap-2">
         {playerIds.map((accountId, index) => (
