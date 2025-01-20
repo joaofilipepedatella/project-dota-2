@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useHero } from "@/app/contexts/HeroContext";
 import heroes from "@/public/heroes.json";
+import Image from "next/image";
 
 export interface Hero {
   id: number;
@@ -13,7 +14,7 @@ export interface Hero {
 interface HeroStats {
   id: number;
   localized_name: string;
-  img: string; // URL da imagem do herói
+  img: string;
 }
 
 interface HeroesListProps {
@@ -69,10 +70,11 @@ const HeroList: React.FC<HeroesListProps> = ({ attribute }) => {
                 className={`rounded shadow p-0 h-16 w-24 flex justify-center items-center text-center hover:bg-transparent`}
                 onClick={() => setHeroId(hero.id)}
               >
-                <img
-                  src={`https://cdn.dota2.com${hero.img}`}
+                <Image
+                  src={`https://cdn.dota2.com${hero.img}` || ""}
                   alt={hero.localized_name}
-                  className="w-24 h-16 rounded-sm"
+                  sizes="width: 100px, height: 100px"
+                  fill
                 />
               </Button>
             </Link>
